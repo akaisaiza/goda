@@ -29,7 +29,7 @@ const Footer = () => {
           <p className="text-gray-400">©{new Date().getFullYear()} - Goda AI</p>
         </div>
         <div className=" row-span-2 sm:col-span-2 sm:col-start-7 sm:col-end-9 flex flex-col">
-          <p className="text-black-600 mb-4 font-medium text-lg">Sản phẩm</p>
+          <p className="text-black-600 mb-4  text-lg">Sản phẩm</p>
           <ul className="text-black-500 ">
             <li className="my-2  cursor-pointer transition-all">
               Tải xuống ứng dụng{" "}
@@ -40,7 +40,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="row-span-2 sm:col-span-2 sm:col-start-9 sm:col-end-11 flex flex-col">
-          <p className="text-black-600 mb-4 font-medium text-lg">Engage</p>
+          <p className="text-black-600 mb-4  text-lg">Engage</p>
           <ul className="text-black-500">
             <li className="my-2  cursor-pointer transition-all">
               Goda AI ?{" "}
@@ -57,7 +57,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="row-span-2 sm:col-span-2 sm:col-start-11 sm:col-end-13 flex flex-col">
-          <p className="text-black-600 mb-4 font-medium text-lg">Earn Money</p>
+          <p className="text-black-600 mb-4  text-lg">Earn Money</p>
           <ul className="text-black-500">
             <li className="my-2 hover:text-whitle-500 cursor-pointer transition-all">
               Quảng cáo{" "}

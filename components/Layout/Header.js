@@ -54,8 +54,8 @@ const Header = () => {
               className={
                 "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
                 (activeLink === "feature"
-                  ? " text-orange-500 animation-active "
-                  : " text-black-500  ")
+                ? " text-blue-500 animation-active "
+                : " text-black-500 hover:text-blue-500 a")
               }
             >
               Tính năng
@@ -72,18 +72,18 @@ const Header = () => {
               className={
                 "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
                 (activeLink === "testimoni"
-                  ? " text-orange-500 animation-active "
-                  : " text-black-500  ")
+                ? " text-blue-500 animation-active "
+                : " text-black-500 hover:text-blue-500 a")
               }
             >
               Nhận xét
             </LinkScroll>
           </ul>
-          <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
+          <div className="col-start-10 col-end-12  flex justify-end items-center">
               <a href="/Auth/login" className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide  transition-all">
                 Đăng nhập
               </a>
-            <ButtonOutline><a href="/Auth/register" className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide  transition-all">
+            <ButtonOutline><a href="/Auth/register" className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide  transition-all hover:bg-blue">
                 Đăng Kí
               </a></ButtonOutline>
           </div>
@@ -104,7 +104,7 @@ const Header = () => {
               className={
                 "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                 (activeLink === "about"
-                  ? "  border-orange-500 text-orange-500"
+                  ? "  border-blue-500 text-blue-500"
                   : " border-transparent")
               }
             >
@@ -136,8 +136,8 @@ const Header = () => {
               className={
                 "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                 (activeLink === "feature"
-                  ? "  border-orange-500 text-orange-500"
-                  : " border-transparent ")
+                  ? "  border-blue-500 text-blue-500"
+                  : " border-transparent")
               }
             >
               <svg
@@ -169,8 +169,8 @@ const Header = () => {
               className={
                 "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                 (activeLink === "testimoni"
-                  ? "  border-orange-500 text-orange-500"
-                  : " border-transparent ")
+                  ? "  border-blue-500 text-blue-500"
+                  : " border-transparent")
               }
             >
               <svg
