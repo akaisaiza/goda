@@ -83,7 +83,7 @@ const Header = () => {
               <a href="/Auth/login" className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide  transition-all">
                 Đăng nhập
               </a>
-            <ButtonOutline><a href="/Auth/register" className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide  transition-all hover:bg-blue">
+            <ButtonOutline><a href="/Auth/register" className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide  transition-all ">
                 Đăng Kí
               </a></ButtonOutline>
           </div>
