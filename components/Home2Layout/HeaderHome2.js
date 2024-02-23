@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ChatComponent from "../chat";
-
+import Profile from "../Profile";
+import HomeScreen from "../HomeScreen";
+import PofileSVG from "../../public/assets/profile.svg"
 const HeaderHome = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrollActive, setScrollActive] = useState(false);
@@ -39,9 +41,9 @@ const HeaderHome = () => {
         <div className="bg-white-500 sm:px-3">
           <ul className="flex w-full justify-between items-center text-black-500">
             <li onClick={() => handleNavigation("home")} className={"mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " + (activeLink === "home" ? "  border-orange-500 text-orange-500" : " border-transparent")}>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className="h-6 w-6" viewBox="0 0 50 50 ">
+<path d="M 24.962891 1.0546875 A 1.0001 1.0001 0 0 0 24.384766 1.2636719 L 1.3847656 19.210938 A 1.0005659 1.0005659 0 0 0 2.6152344 20.789062 L 4 19.708984 L 4 46 A 1.0001 1.0001 0 0 0 5 47 L 18.832031 47 A 1.0001 1.0001 0 0 0 19.158203 47 L 30.832031 47 A 1.0001 1.0001 0 0 0 31.158203 47 L 45 47 A 1.0001 1.0001 0 0 0 46 46 L 46 19.708984 L 47.384766 20.789062 A 1.0005657 1.0005657 0 1 0 48.615234 19.210938 L 41 13.269531 L 41 6 L 35 6 L 35 8.5859375 L 25.615234 1.2636719 A 1.0001 1.0001 0 0 0 24.962891 1.0546875 z M 25 3.3222656 L 44 18.148438 L 44 45 L 32 45 L 32 26 L 18 26 L 18 45 L 6 45 L 6 18.148438 L 25 3.3222656 z M 37 8 L 39 8 L 39 11.708984 L 37 10.146484 L 37 8 z M 20 28 L 30 28 L 30 45 L 20 45 L 20 28 z"></path>
+</svg>
               Trang chủ
             </li>
             <li onClick={() => handleNavigation("chat")} className={"mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " + (activeLink === "chat" ? "  border-orange-500 text-orange-500" : " border-transparent ")}>
@@ -49,18 +51,16 @@ const HeaderHome = () => {
               Chat
             </li>
             <li onClick={() => handleNavigation("profile")} className={"mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " + (activeLink === "profile" ? "  border-orange-500 text-orange-500" : " border-transparent ")}>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-              </svg>
+            <PofileSVG className="h-8 w-8"/>
               Cá nhân
             </li>
           </ul>
         </div>
       </nav>
       <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto">
-        {activeLink === "home" && <div>Content for Home page</div>}
+        {activeLink === "home" && <HomeScreen/>}
         {activeLink === "chat" && <ChatComponent/>}
-        {activeLink === "profile" && <div>Content for Profile page</div>}
+        {activeLink === "profile" && <Profile/>}
       </div>
     </>
   );
