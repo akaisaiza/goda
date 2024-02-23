@@ -36,7 +36,7 @@ const Header = () => {
               className={
                 "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
                 (activeLink === "about"
-                  ? " text-blue-500 animation-active "
+                  ? " text-blue-500  "
                   : " text-black-500 hover:text-blue-500 a")
               }
             >
@@ -54,7 +54,7 @@ const Header = () => {
               className={
                 "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
                 (activeLink === "feature"
-                ? " text-blue-500 animation-active "
+                ? " text-blue-500  "
                 : " text-black-500 hover:text-blue-500 a")
               }
             >
@@ -72,7 +72,7 @@ const Header = () => {
               className={
                 "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
                 (activeLink === "testimoni"
-                ? " text-blue-500 animation-active "
+                ? " text-blue-500 "
                 : " text-black-500 hover:text-blue-500 a")
               }
             >
