@@ -1,6 +1,6 @@
 class APIService {
     constructor() {
-        this.baseUrl = 'https://api-goda-ai.quachuoitrenmay.online';
+        this.baseUrl = 'https://api.goda-ai.com';
     }
 
     async fetchData(path, jwtToken = null) {
