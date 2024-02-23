@@ -1,11 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import APIService from './Service/APIService';
+const apiService = new APIService();
 
 const HomeScreen = () => {
-    const [projects, setProjects] = useState([
-        { id: 1, imageUrl: "https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60", typeName: "Type name 3", locationName: "Location Name 3" },
-        { id: 2, imageUrl: "https://images.unsplash.com/photo-1651950519238-15835722f8bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mjh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60", typeName: "Type name 2", locationName: "Location Name 2" },
-        { id: 3, imageUrl: "https://images.unsplash.com/photo-1651950537598-373e4358d320?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60", typeName: "Type name 1", locationName: "Location Name 1" }
-    ]);
+    const [projects, setProjects] = useState([]);
+    const [filteredProjects, setFilteredProjects] = useState([]);
+    const [sortBy, setSortBy] = useState('typeName');
+    const [selectedLocation, setSelectedLocation] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const jwtToken = localStorage.getItem("jwtToken");
+                const response = await apiService.fetchData('api/location/near?distance=20&longitude=105.84117000&latitude=21.02450000', jwtToken);
+                setProjects(response);
+                setFilteredProjects(response);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        filterAndSortProjects();
+    }, [sortBy]);
+
+    const filterAndSortProjects = () => {
+        const sortedProjects = [...filteredProjects].sort((a, b) => {
+            if (sortBy === 'typeName') {
+                return a.type.localeCompare(b.type);
+            } else if (sortBy === '-typeName') {
+                return b.type.localeCompare(a.type);
+            }
+            return 0;
+        });
+        setFilteredProjects(sortedProjects);
+    };
+
+    const handleSortByChange = (event) => {
+        setSortBy(event.target.value);
+    };
+
+    const handleLocationClick = (id) => {
+        const location = projects.find(project => project.id === id);
+        setSelectedLocation(location);
+    };
 
     const ProjectItem = ({ imageUrl, typeName, locationName, id }) => (
         <div className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
@@ -31,35 +72,13 @@ const HomeScreen = () => {
         </div>
     );
 
-    const [filteredProjects, setFilteredProjects] = useState([...projects]);
-    const [sortBy, setSortBy] = useState('typeName');
-    const [selectedLocation, setSelectedLocation] = useState(null);
-
-    const filterAndSortProjects = () => {
-        const sortedProjects = [...filteredProjects].sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
-        setFilteredProjects(sortedProjects);
-    };
-
-    const handleSortByChange = (event) => {
-        setSortBy(event.target.value);
-    };
-
-    const handleFilterSort = () => {
-        filterAndSortProjects();
-    };
-
-    const handleLocationClick = (id) => {
-        const location = projects.find(project => project.id === id);
-        setSelectedLocation(location);
-    };
-
     return (
         <>
             {selectedLocation && (
                 <div className="fixed top-0 left-0 w-full h-full bg-white flex justify-center items-center">
                     <div className="bg-white p-4 rounded-md">
-                        <p>Type Name: {selectedLocation.typeName}</p>
-                        <p>Location Name: {selectedLocation.locationName}</p>
+                        <p>Type Name: {selectedLocation.type}</p>
+                        <p>Location Name: {selectedLocation.name}</p>
                         <button onClick={() => setSelectedLocation(null)}>Close</button>
                     </div>
                 </div>
@@ -67,7 +86,7 @@ const HomeScreen = () => {
 
             <div>
                 <div className="mb-1">
-                    <button onClick={handleFilterSort} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button onClick={filterAndSortProjects} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Bộ lọc
                     </button>
                 </div>

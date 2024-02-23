@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-
+import APIService from './Service/APIService';
 const ChatComponent = () => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [jwt, setJwt] = useState('');
     const router = useRouter();
+    const apiService = new APIService();
 
     useEffect(() => {
         const el = document.getElementById('messages');
@@ -20,9 +21,9 @@ const ChatComponent = () => {
         } else {
           setJwt(storedJwt);
         }
-      }, [router]);
+    }, [router]);
 
-    const sendMessage = (e) => {
+    const sendMessage = async (e) => {
         e.preventDefault();
         if (!newMessage.trim()) return;
 
@@ -34,13 +35,13 @@ const ChatComponent = () => {
 
         setMessages([...messages, userMessage]);
 
-        axios.post('http://18.143.107.222:8000/chat', {
-            content: newMessage,
-            session_id: jwt ?? "test", 
-            longitude: 0, 
-            latitude: 0, 
-        })
-        .then(response => {
+        try {
+            const response = await apiService.postData('api/chat', {
+                content: newMessage,
+                session_id: jwt ?? "test", 
+                longitude: 0, 
+                latitude: 0, 
+            },jwt);
             const { answer, places } = response.data.response;
             const botMessage = {
                 id: new Date().getTime() + 1,
@@ -50,10 +51,9 @@ const ChatComponent = () => {
             };
 
             setMessages((prevMessages) => [...prevMessages, botMessage]);
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Error sending message:', error);
-        });
+        }
 
         setNewMessage('');
     };

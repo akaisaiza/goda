@@ -14,15 +14,6 @@ const Footer = () => {
             <strong className="font-medium">Goda AI</strong> là một ứng dụng hỗ trợ tìm kiếm các địa điểm đi chơi
           </p>
           <div className="flex w-full mt-2 mb-8 -mx-2">
-            {/* <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
-              <Facebook className="h-6 w-6" />
-            </div>
-            <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
-              <Twitter className="h-6 w-6" />
-            </div>
-            <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
-              <Instagram className="h-6 w-6" />
-            </div> */}
             <div>
              Liên hệ qua : <a href="mailto:godaai.official.com"><strong className="font-medium">godaai.official.com</strong> </a>
             </div>
