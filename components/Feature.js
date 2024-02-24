@@ -6,9 +6,9 @@ import ScrollAnimationWrapper from "./Layout/ScrollAnimationWrapper";
 
 const features = [
   "Miễn phí",
-  "Không giới hạn",
-  "Dễ lựa chọn",
-  "Đánh giá khách quan"
+  "Thông tin chi tiết về địa điểm",
+  "Đánh giá khách quan",
+  "Tiết kiệm thời gian tìm kiếm"
 ]
 
 const Feature = () => {
@@ -22,8 +22,8 @@ const Feature = () => {
       <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-2 gap-8 p  y-8 my-12">
         <ScrollAnimationWrapper className="flex w-full justify-end">
           <motion.div className="h-full w-full p-4" variants={scrollAnimation}>
-            <Image
-              src="/assets/Illustration2.png"
+            <img
+              src="https://th.bing.com/th/id/OIP.ThH2xfPrlbB4Lap3zIdh3wHaFg?rs=1&pid=ImgDetMain"
               alt="VPN Illustrasi"
               layout="responsive"
               quality={100}

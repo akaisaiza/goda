@@ -45,7 +45,7 @@ const Hero = ({
               <ButtonPrimary>Khám Phá Ngay</ButtonPrimary>
             </div>
             <div className="flex w-full">
-            <motion.div className="h-full w-full overflow-hidden rounded-lg border border-gray-300" variants={scrollAnimation}>
+            <motion.div className="h-full w-full overflow-hidden rounded-lg" variants={scrollAnimation}>
                 <img
                   src="https://media-api.xogrp.com/images/9810901f-35b4-4efe-8454-c2b109cd7b60~rs_768.h" 
                   alt="Hình Ảnh Khám Phá"
