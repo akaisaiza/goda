@@ -1,6 +1,7 @@
 class APIService {
     constructor() {
         this.baseUrl = 'https://api.goda-ai.com';
+        // this.baseUrl = 'http://localhost:8080';
     }
 
     async fetchData(path, jwtToken = null) {

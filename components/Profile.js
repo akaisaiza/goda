@@ -31,7 +31,6 @@ const Profile = () => {
             setChangePasswordError('Mật khẩu không khớp');
             return;
         }
-
         try {
             const jwtToken = localStorage.getItem('jwtToken');
             const response = await apiService.postData('api/account', { email: userData.email, oldPassword: currentPassword, newPassword: newPassword }, jwtToken);
