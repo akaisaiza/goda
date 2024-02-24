@@ -67,9 +67,9 @@ li.check:before {
   height: 85vh; /* Chiều cao 70% của viewport */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 400px) {
   .custom-height-md {
-      height: 90vh; /* Chiều cao 90% của viewport khi độ rộng màn hình lớn hơn hoặc bằng 768px */
+      height: 40vh; /* Chiều cao 90% của viewport khi độ rộng màn hình lớn hơn hoặc bằng 768px */
   }
 }
 /* purgecss end ignore */

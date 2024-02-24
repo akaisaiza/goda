@@ -199,16 +199,16 @@ const HomeScreen = () => {
                 })}
             </section>
 
-            <div className={`overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full max-h-full ${openModal ? 'block' : 'hidden'}`}>
+            <div className={`overflow-y-auto overflow-x-hidden bg-gray-500 bg-opacity-75 fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full max-h-full ${openModal ? 'block' : 'hidden'}`}>
                 <div className='flex justify-center'>
 
                 <div className="relative p-4 w-full max-w-2xl bg-white-500 p-6">
-                    <button onClick={onCloseModal} className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700">
+                    <button onClick={onCloseModal} className="absolute top-0 right-0 mt-2 mr-2 text-black-500 hover:text-gray-700">
                         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
-                    <h1 className='text-4'>{selectedLocation?.name}</h1>
+                    <h1 className='text-[40px] font-bold'>{selectedLocation?.name}</h1>
                     <div className='py-3'>
                         <img src={selectedLocation?.image_link} className='w-full h-full' style={{ borderRadius: "5px" }} />
                     </div>
