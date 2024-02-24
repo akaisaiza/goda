@@ -12,6 +12,9 @@ export default function Login() {
             const data = { username, password };
             const response = await apiService.postData('api/auth/signin', data);
             localStorage.setItem('jwtToken', response.accessToken);
+            localStorage.setItem('username', response.username);
+            localStorage.setItem('id', response.id);
+            localStorage.setItem('email', response.email);
             window.location.href = '/Home';
         } catch (error) {
             setError('Đăng nhập thất bại');

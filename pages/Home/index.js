@@ -7,8 +7,7 @@ export default function Home2() {
   const [jwt, setJwt] = useState('');
 
   useEffect(() => {
-    // const storedJwt = localStorage.getItem("jwtToken");
-    const storedJwt =  "jdhbv";
+    const storedJwt = localStorage.getItem("jwtToken");
     if (!storedJwt || storedJwt === undefined) {
       router.push('/Auth/login');
     } else {
