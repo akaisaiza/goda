@@ -42,7 +42,7 @@ const ChatComponent = () => {
                 longitude: 0, 
                 latitude: 0, 
             },jwt);
-            const { answer, places } = response.data.response;
+            const { answer, places } = response.response;
             const botMessage = {
                 id: new Date().getTime() + 1,
                 text: answer,
@@ -60,7 +60,7 @@ const ChatComponent = () => {
 
     const botAvatar = '/assets/goda_logo.png';
     return (
-        <div className="flex-1 p-4 sm:p-8 justify-between flex flex-col h-[70vh] md:h-[90vh] bg-gray-100 rounded-lg shadow">
+        <div className="flex-1 p-4 sm:p-8 justify-between flex flex-col custom-height-sm bg-gray-100 rounded-lg shadow">
             <div id="messages" className="flex flex-col space-y-4 p-4 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
                 {messages.map((message) => (
                     <div key={message.id} className={`chat-message flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>

@@ -62,7 +62,16 @@ li.check:before {
 .slick-dots .slick-active span {
   @apply bg-blue-500 rounded-l-full rounded-r-full w-12;
 }
+/* CSS */
+.custom-height-sm {
+  height: 85vh; /* Chiều cao 70% của viewport */
+}
 
+@media (min-width: 768px) {
+  .custom-height-md {
+      height: 90vh; /* Chiều cao 90% của viewport khi độ rộng màn hình lớn hơn hoặc bằng 768px */
+  }
+}
 /* purgecss end ignore */
 @tailwind utilities;
 /* purgecss start ignore */
