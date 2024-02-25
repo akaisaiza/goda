@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import APIService from './Service/APIService';
 import LocationModal from './LocationModal';
-
+import ButtonPrimary from './misc/ButtonOutline.';
 const apiService = new APIService();
 
 const HomeScreen = ({ openChat }) => {
@@ -118,7 +118,7 @@ const HomeScreen = ({ openChat }) => {
     return (
         <>
             <div className="md:flex md:justify-between md:items-center">
-                <form class="mx-auto my-2">
+                <form class="">
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -128,18 +128,19 @@ const HomeScreen = ({ openChat }) => {
                         </div>
                         <input type="search" value={searchTerm}
                             onChange={handleSearchInputChange}
-                            placeholder="Tìm kiếm theo tên" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                            placeholder="Tìm kiếm theo tên" id="default-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </form>
+                
 
 
                 <div className="flex flex-wrap">
-                    <select value={sortBy} onChange={handleSortByChange} className="mr-2 p-2 border rounded">
+                    <select value={sortBy} onChange={handleSortByChange} className="mr-1 p-1 border rounded">
                         <option value="typeName">A-Z</option>
                         <option value="-typeName">Z-A</option>
                     </select>
 
-                    <select value={starFilter || 'all'} onChange={handleStarFilterChange} className="mr-2 p-2 border rounded">
+                    <select value={starFilter || 'all'} onChange={handleStarFilterChange} className="mr-1 p-1 border rounded">
                         <option value="all">Tất cả sao</option>
                         <option value="5">5 sao</option>
                         <option value="4">4 sao</option>
@@ -148,7 +149,7 @@ const HomeScreen = ({ openChat }) => {
                         <option value="1">1 sao</option>
                     </select>
 
-                    <select value={typeFilter || 'all'} onChange={handleTypeFilterChange} className="mr-2 p-2 my-2 border rounded">
+                    <select value={typeFilter || 'all'} onChange={handleTypeFilterChange} className="mr-1 p-1 border rounded">
                         <option value="all">Tất cả loại</option>
                         <option value="1">Đồ uống và check-in</option>
                         <option value="2">Khám phá Ẩm thực</option>
