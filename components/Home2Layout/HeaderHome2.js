@@ -58,7 +58,7 @@ const HeaderHome = () => {
         </div>
       </nav>
       <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto">
-        {activeLink === "home" && <HomeScreen/>}
+        {activeLink === "home" &&  <HomeScreen openChat={handleNavigation} />}
         {activeLink === "chat" && <ChatComponent/>}
         {activeLink === "profile" && <Profile/>}
       </div>
