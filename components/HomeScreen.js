@@ -18,7 +18,7 @@ const HomeScreen = ({ openChat }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await apiService.fetchData('api/location/near?distance=50&longitude=105.84117000&latitude=21.02450000', jwtToken);
+                const response = await apiService.fetchData('api/location/near?distance=20&longitude=105.84117000&latitude=21.02450000', jwtToken);
                 setProjects(response);
                 setFilteredProjects(response);
             } catch (error) {
@@ -131,7 +131,7 @@ const HomeScreen = ({ openChat }) => {
                             placeholder="Tìm kiếm theo tên" id="default-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </form>
-                
+
 
 
                 <div className="flex flex-wrap">
@@ -156,6 +156,7 @@ const HomeScreen = ({ openChat }) => {
                         <option value="3">Trải Nghiệm Giải Trí</option>
                         <option value="other">Khác</option>
                     </select>
+
                 </div>
             </div>
 
