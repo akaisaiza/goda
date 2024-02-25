@@ -21,7 +21,7 @@ const Pricing = () => {
           <ScrollAnimationWrapper>
             <motion.h3
               variants={scrollAnimation}
-              className="text-2xl sm:text-3xl lg:text-4xl  text-black-600 leading-relaxed w-9/12 sm:w-6/12 lg:w-4/12 mx-auto">
+              className="text-2xl sm:text-3xl lg:text-4xl  text-black-600 leading-relaxed w-9/12 sm:w-6/12 lg:w-4/12 mx-auto" style={{textTransform: "capitalize"}}>
               Tìm kiếm địa
               điểm tại bất cứ đâu{" "}
             </motion.h3>
@@ -41,7 +41,7 @@ const Pricing = () => {
           <ScrollAnimationWrapper>
             <motion.h3
               variants={scrollAnimation}
-              className="text-2xl sm:text-3xl lg:text-4xl  text-black-600 leading-normal w-9/12 sm: lg:w-4/12 mx-auto">
+              className="text-2xl sm:text-3xl lg:text-4xl  text-black-600 leading-normal w-9/12 sm: lg:w-4/12 mx-auto" style={{textTransform: "capitalize"}}>
               Người dùng đã nói gì về chúng tôi?{" "}
             </motion.h3>
             <motion.p

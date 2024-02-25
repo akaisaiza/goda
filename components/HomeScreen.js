@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import APIService from './Service/APIService';
 import "react-responsive-modal";
 import { Modal } from "react-responsive-modal";
+import LocationDetail from './LocationDetail';
 const apiService = new APIService();
 
 const HomeScreen = () => {
@@ -108,7 +109,6 @@ const HomeScreen = () => {
     const handleLocationClick = (id) => {
         const location = projects.find(project => project.id === id);
         setSelectedLocation(location);
-        console.log(selectedLocation);
         setOpenModal(true);
     };
 
@@ -199,6 +199,7 @@ const HomeScreen = () => {
                 })}
             </section>
 
+            {/* <LocationDetail id={selectedLocation?.id} open={openModal} onClose={() => setOpenModal(false)}/> */}
             <div className={`overflow-y-auto overflow-x-hidden bg-gray-500 bg-opacity-75 fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full max-h-full ${openModal ? 'block' : 'hidden'}`}>
                 <div className='flex justify-center'>
 

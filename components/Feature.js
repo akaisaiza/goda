@@ -35,8 +35,8 @@ const Feature = () => {
         <ScrollAnimationWrapper>
 
         <motion.div className="flex flex-col items-end justify-center ml-auto w-full lg:w-9/12" variants={scrollAnimation}>
-          <h3 className="text-3xl lg:text-4xl  leading-relaxed text-black-600">
-          Việc tìm kiếm trở lên đơn giản
+          <h3 className="text-3xl lg:text-4xl  leading-relaxed text-black-600" style={{textTransform: "capitalize"}}>
+          Việc tìm kiếm trở lên đơn giản hơn bao giờ hết
                     </h3>
           <p className="my-2 text-black-500">
             Với Goda chat bạn có thể lựa chọn các địa điểm phù hợp và nhanh nhất
