@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import APIService from './Service/APIService';
 import LocationModal from './LocationModal';
+
 const apiService = new APIService();
 
 const HomeScreen = ({ openChat }) => {
@@ -8,22 +9,18 @@ const HomeScreen = ({ openChat }) => {
     const [filteredProjects, setFilteredProjects] = useState([]);
     const [sortBy, setSortBy] = useState('typeName');
     const [selectedLocation, setSelectedLocation] = useState(null);
-    const [starFilter, setStarFilter] = useState(null); 
-    const [typeFilter, setTypeFilter] = useState(null); // Trạng thái cho loại
+    const [starFilter, setStarFilter] = useState(null);
+    const [typeFilter, setTypeFilter] = useState(null);
+    const [searchTerm, setSearchTerm] = useState(''); // State for search term
     const [openModal, setOpenModal] = useState(false);
     const jwtToken = localStorage.getItem("jwtToken");
-    
-    
-
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-
                 const response = await apiService.fetchData('api/location/near?distance=50&longitude=105.84117000&latitude=21.02450000', jwtToken);
                 setProjects(response);
                 setFilteredProjects(response);
-
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -34,7 +31,7 @@ const HomeScreen = ({ openChat }) => {
 
     useEffect(() => {
         filterAndSortProjects();
-    }, [sortBy, starFilter, typeFilter]);
+    }, [sortBy, starFilter, typeFilter, searchTerm]); // Add searchTerm to dependencies
 
     const filterAndSortProjects = () => {
         const sortedProjects = [...projects].sort((a, b) => {
@@ -47,7 +44,8 @@ const HomeScreen = ({ openChat }) => {
         });
         const filtered = sortedProjects.filter(project => {
             return (!starFilter || parseFloat(project.avg_rate) === parseFloat(starFilter)) &&
-                (!typeFilter || project.type === typeFilter);
+                (!typeFilter || project.type === typeFilter) &&
+                (!searchTerm || project.name.toLowerCase().includes(searchTerm.toLowerCase())); // Filter by name
         });
         setFilteredProjects(filtered);
     };
@@ -58,11 +56,15 @@ const HomeScreen = ({ openChat }) => {
 
     const handleStarFilterChange = (event) => {
         setStarFilter(event.target.value === 'all' ? null : event.target.value);
-    }
+    };
 
     const handleTypeFilterChange = (event) => {
         setTypeFilter(event.target.value === 'all' ? null : event.target.value);
-    }
+    };
+
+    const handleSearchInputChange = (event) => {
+        setSearchTerm(event.target.value); // Update search term
+    };
 
     const handleLocationClick = (id) => {
         const location = projects.find(project => project.id === id);
@@ -72,7 +74,7 @@ const HomeScreen = ({ openChat }) => {
 
     const onCloseModal = () => {
         setOpenModal(false);
-    }
+    };
 
     const ProjectItem = ({ name, image_link, type, id, avg_rate }) => {
         let typeName = '';
@@ -115,15 +117,23 @@ const HomeScreen = ({ openChat }) => {
 
     return (
         <>
-            <div>
-                <div className="mb-1">
-                    {/* <button onClick={filterAndSortProjects} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Bộ lọc
-                    </button> */}
-                    <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded' onClick={() => openChat("chat")}>Open Chat</button>
+            <div className="md:flex md:justify-between md:items-center">
+                <form class="mx-auto my-2">
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="search" value={searchTerm}
+                            onChange={handleSearchInputChange}
+                            placeholder="Tìm kiếm theo tên" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    </div>
+                </form>
 
-                </div>
-                <div className='flex'>
+
+                <div className="flex flex-wrap">
                     <select value={sortBy} onChange={handleSortByChange} className="mr-2 p-2 border rounded">
                         <option value="typeName">A-Z</option>
                         <option value="-typeName">Z-A</option>
@@ -138,7 +148,7 @@ const HomeScreen = ({ openChat }) => {
                         <option value="1">1 sao</option>
                     </select>
 
-                    <select value={typeFilter || 'all'} onChange={handleTypeFilterChange} className="mr-2 p-2 border rounded">
+                    <select value={typeFilter || 'all'} onChange={handleTypeFilterChange} className="mr-2 p-2 my-2 border rounded">
                         <option value="all">Tất cả loại</option>
                         <option value="1">Đồ uống và check-in</option>
                         <option value="2">Khám phá Ẩm thực</option>
@@ -147,6 +157,7 @@ const HomeScreen = ({ openChat }) => {
                     </select>
                 </div>
             </div>
+
 
             <section id="Projects"
                 className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 pb-20">
@@ -164,7 +175,6 @@ const HomeScreen = ({ openChat }) => {
                 onCloseModal={onCloseModal}
                 selectedLocationid={selectedLocation?.id}
             />
-            
         </>
     );
 };

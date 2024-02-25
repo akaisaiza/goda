@@ -64,7 +64,7 @@ li.check:before {
 }
 /* CSS */
 .custom-height-sm {
-  height: 85vh; /* Chiều cao 70% của viewport */
+  height: 90vh; /* Chiều cao 70% của viewport */
 }
 
 @media (min-width: 400px) {
