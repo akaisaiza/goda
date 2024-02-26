@@ -123,7 +123,7 @@ const ChatComponent = () => {
                 <form className="relative flex" onSubmit={(e) => sendMessage(e, newMessage)}>
                     <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} placeholder="Write your message!" className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-5 bg-gray-200 rounded-md py-3" />
                     <button type="submit" className="absolute right-0 items-center inset-y-0 sm:flex px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
-                        Send
+                        Gửi
                     </button>
                 </form>
             </div>

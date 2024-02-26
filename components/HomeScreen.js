@@ -130,7 +130,7 @@ const HomeScreen = ({ openChat }) => {
     return (
         <>
             <div className="md:flex md:justify-between md:items-center">
-            <button className='tracking-wide py-2 px-5 sm:px-8 border border- blue-500 text- blue-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-blue-500 hover:text-white-500 transition-all hover:shadow-blue' onClick={() => openChat("chat")}>Open Chat</button>
+            <button className='tracking-wide py-2 px-5 sm:px-8 border border- blue-500 text- blue-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-blue-500 hover:text-white-500 transition-all hover:shadow-blue' onClick={() => openChat("chat")}>Trò chuyện ngay</button>
 
                 <form class="">
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
