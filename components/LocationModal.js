@@ -38,7 +38,7 @@ const LocationModal = ({ openModal, onCloseModal, selectedLocationid }) => {
         sunday: 'Chủ nhật'
     };
     const [rating, setRating] = useState(null);
-
+    
     const handleRatingChange = (event) => {
         setRating(event.target.value);
     };
@@ -235,7 +235,6 @@ const LocationModal = ({ openModal, onCloseModal, selectedLocationid }) => {
                         </section>
                     </div>
                 </div>
-
             </div>
         </div>
     );

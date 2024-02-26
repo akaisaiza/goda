@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import APIService from './Service/APIService';
+import LocationModal from './LocationModal';
+
 const ChatComponent = () => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [jwt, setJwt] = useState('');
     const router = useRouter();
     const apiService = new APIService();
+    const [openModal, setOpenModal] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState(null);
 
     useEffect(() => {
         const el = document.getElementById('messages');
@@ -22,7 +25,13 @@ const ChatComponent = () => {
             setJwt(storedJwt);
         }
     }, [router]);
-
+    const onCloseModal = () => {
+        setOpenModal(false);
+    };
+    const handleLocationClick = (id) => {
+        setOpenModal(true);
+        setSelectedLocation(id);
+    };
     const sendMessage = async (e, message) => {
         e.preventDefault();
         if (!message.trim()) return;
@@ -79,12 +88,25 @@ const ChatComponent = () => {
                                     {message.places.map((place) => (
                                         <div key={place.id} className="place-card p-4 my-4 border rounded-lg shadow-md">
                                             <h3 className="text-xl font-semibold mb-2">{place.name}</h3>
-                                            <a className='flex items-center' href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place?.name)}`} target="_blank" rel="noopener noreferrer">
-                                                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" stroke="#27B3E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" stroke="#27B3E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                                                <div className='ml-3'>{place?.address}</div>
-                                            </a>
+
                                             <p className={`"text-gray-600" ${place.avg_rate ? "" : "hidden"}`}>Đánh giá: {place.avg_rate} ⭐</p>
                                             <img src={place.image_link} alt={place.name} className="mt-2 rounded-lg" />
+                                            <div className='flex py-6'>
+                                                <div className="flex items-center mr-4"> {/* Container cho "Vị Trí" */}
+                                                    <a className='flex items-center tracking-wide py-2 sm:px-8 border border-blue-500 text-blue-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-blue-500 hover:text-white-500 transition-all hover:shadow-blue' href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place?.name)}`} target="_blank" rel="noopener noreferrer">
+                                                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                            <g id="SVGRepo_iconCarrier">
+                                                                <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" stroke="#27B3E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" stroke="#27B3E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </g>
+                                                        </svg>
+                                                        <div className='ml-3'>Vị Trí</div>
+                                                    </a>
+                                                </div>
+                                                <button className='flex items-center tracking-wide py-2 px-5 sm:px-8 border border-blue-500 text-blue-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-blue-500 hover:text-white-500 transition-all hover:shadow-blue' onClick={() => handleLocationClick(place.id)}>Chi tiết</button>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
@@ -105,6 +127,11 @@ const ChatComponent = () => {
                     </button>
                 </form>
             </div>
+            <LocationModal
+                openModal={openModal}
+                onCloseModal={onCloseModal}
+                selectedLocationid={selectedLocation}
+            />
         </div>
     );
 };

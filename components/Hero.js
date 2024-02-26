@@ -42,7 +42,7 @@ const Hero = ({
             <p className="text-black-500 mt-4 mb-6">
               Bắt đầu hành trình khám phá với Goda AI và khám phá những bí mật xung quanh bạn. Khám phá, trải nghiệm và chia sẻ cuộc phiêu lưu của bạn với chúng tôi.
             </p>
-            <ButtonPrimary>Khám Phá Ngay</ButtonPrimary>
+     <a className="py-3 lg:py-4 px-12 lg:px-16 text-white-500 font-semibold rounded-lg bg-blue-500 hover:shadow-blue-md transition-all outline-none " href="/Auth/login">Khám Phá Ngay</a>
           </div>
           <div className="flex w-full justify-center">
             <motion.div className="h-full w-full overflow-hidden rounded-lg flex justify-center" variants={scrollAnimation}>

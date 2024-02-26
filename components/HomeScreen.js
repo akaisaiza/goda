@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import APIService from './Service/APIService';
 import LocationModal from './LocationModal';
-import ButtonPrimary from './misc/ButtonOutline.';
 const apiService = new APIService();
 
 const HomeScreen = ({ openChat }) => {
@@ -11,16 +10,28 @@ const HomeScreen = ({ openChat }) => {
     const [selectedLocation, setSelectedLocation] = useState(null);
     const [starFilter, setStarFilter] = useState(null);
     const [typeFilter, setTypeFilter] = useState(null);
-    const [searchTerm, setSearchTerm] = useState(''); // State for search term
+    const [searchTerm, setSearchTerm] = useState('');
     const [openModal, setOpenModal] = useState(false);
     const jwtToken = localStorage.getItem("jwtToken");
+
+    const getProjectsFromCache = () => {
+        const cachedProjects = localStorage.getItem('projects');
+        return cachedProjects ? JSON.parse(cachedProjects) : null;
+    };
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await apiService.fetchData('api/location/near?distance=20&longitude=105.84117000&latitude=21.02450000', jwtToken);
-                setProjects(response);
-                setFilteredProjects(response);
+                let cachedProjects = getProjectsFromCache();
+                if (!cachedProjects) {
+                    const response = await apiService.fetchData('api/location/near?distance=30&longitude=105.84117000&latitude=21.02450000', jwtToken);
+                    setProjects(response);
+                    setFilteredProjects(response);
+                    localStorage.setItem('projects', JSON.stringify(response));
+                } else {
+                    setProjects(cachedProjects);
+                    setFilteredProjects(cachedProjects);
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -31,7 +42,8 @@ const HomeScreen = ({ openChat }) => {
 
     useEffect(() => {
         filterAndSortProjects();
-    }, [sortBy, starFilter, typeFilter, searchTerm]); // Add searchTerm to dependencies
+        localStorage.setItem('projects', JSON.stringify(projects));
+    }, [sortBy, starFilter, typeFilter, searchTerm, projects]);
 
     const filterAndSortProjects = () => {
         const sortedProjects = [...projects].sort((a, b) => {
@@ -45,7 +57,7 @@ const HomeScreen = ({ openChat }) => {
         const filtered = sortedProjects.filter(project => {
             return (!starFilter || parseFloat(project.avg_rate) === parseFloat(starFilter)) &&
                 (!typeFilter || project.type === typeFilter) &&
-                (!searchTerm || project.name.toLowerCase().includes(searchTerm.toLowerCase())); // Filter by name
+                (!searchTerm || project.name.toLowerCase().includes(searchTerm.toLowerCase()));
         });
         setFilteredProjects(filtered);
     };
@@ -63,7 +75,7 @@ const HomeScreen = ({ openChat }) => {
     };
 
     const handleSearchInputChange = (event) => {
-        setSearchTerm(event.target.value); // Update search term
+        setSearchTerm(event.target.value);
     };
 
     const handleLocationClick = (id) => {
@@ -118,6 +130,8 @@ const HomeScreen = ({ openChat }) => {
     return (
         <>
             <div className="md:flex md:justify-between md:items-center">
+            <button className='tracking-wide py-2 px-5 sm:px-8 border border- blue-500 text- blue-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-blue-500 hover:text-white-500 transition-all hover:shadow-blue' onClick={() => openChat("chat")}>Open Chat</button>
+
                 <form class="">
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="relative">
