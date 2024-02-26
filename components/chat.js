@@ -93,7 +93,7 @@ const ChatComponent = () => {
                                             <img src={place.image_link} alt={place.name} className="mt-2 rounded-lg" />
                                             <div className='flex py-6'>
                                                 <div className="flex items-center mr-4"> {/* Container cho "Vị Trí" */}
-                                                    <a className='flex items-center tracking-wide py-2 sm:px-8 border border-blue-500 text-blue-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-blue-500 hover:text-white-500 transition-all hover:shadow-blue' href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place?.name)}`} target="_blank" rel="noopener noreferrer">
+                                                    <a className='flex items-center tracking-wide py-2 px-3 sm:px-8 border border-blue-500 text-blue-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-blue-500 hover:text-white-500 transition-all hover:shadow-blue' href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place?.name)}`} target="_blank" rel="noopener noreferrer">
                                                         <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -102,10 +102,10 @@ const ChatComponent = () => {
                                                                 <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" stroke="#27B3E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                                             </g>
                                                         </svg>
-                                                        <div className='ml-3'>Vị Trí</div>
+                                                        <div className=''>Vị Trí</div>
                                                     </a>
                                                 </div>
-                                                <button className='flex items-center tracking-wide py-2 px-5 sm:px-8 border border-blue-500 text-blue-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-blue-500 hover:text-white-500 transition-all hover:shadow-blue' onClick={() => handleLocationClick(place.id)}>Chi tiết</button>
+                                                <button className='flex items-center tracking-wide py-2 px-3 sm:px-8 border border-blue-500 text-blue-500 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize hover:bg-blue-500 hover:text-white-500 transition-all hover:shadow-blue' onClick={() => handleLocationClick(place.id)}>Chi tiết</button>
                                             </div>
                                         </div>
                                     ))}
