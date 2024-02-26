@@ -17,7 +17,7 @@ class MyDocument extends Document {
           />
           <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=7572514745`}
+            src={`https://www.googletagmanager.com/gtag/js?id=G-NH16K0XBEZ`}
           />
           <script
             dangerouslySetInnerHTML={{
@@ -25,7 +25,7 @@ class MyDocument extends Document {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '7572514745', {
+            gtag('config', 'G-NH16K0XBEZ', {
               page_path: window.location.pathname,
             });
           `,
