@@ -1,10 +1,6 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/Auth/login": "pages/Auth/login.html",
   "/_document": "pages/_document.js",
-  "/Auth/register": "pages/Auth/register.html",
-  "/Home": "pages/Home.html",
-  "/": "pages/index.html",
-  "/404": "pages/404.html"
+  "/termsCondition": "pages/termsCondition.js"
 }
