@@ -72,9 +72,13 @@ const ChatComponent = () => {
     };
 
 
+    const fakeMessage = async (e, message) => {
+
+    }
     const botAvatar = '/assets/goda_logo.png';
     return (
         <div className="flex-1 p-4 sm:p-8 justify-between flex flex-col custom-height-sm bg-gray-100 rounded-lg shadow">
+            <div className="text-center" style={{color: "red"}}>Sản phẩm đang trong quá trình dùng thử tại Hòa Lạc</div>
             <div id="messages" className="flex flex-col space-y-4 p-4 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
                 {messages.map((message) => (
                     <div key={message.id} className={`chat-message flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
