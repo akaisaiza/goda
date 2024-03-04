@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import APIService from './Service/APIService';
 import LocationModal from './LocationModal';
+import Loading from './Loading';
 
 const ChatComponent = () => {
+    const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [jwt, setJwt] = useState('');
@@ -47,12 +49,14 @@ const ChatComponent = () => {
         setMessages([...messages, userMessage]);
 
         try {
+            setLoading(true);
             const response = await apiService.postData('api/chat', {
                 content: message,
                 session_id: jwt ?? "test",
                 longitude: 0,
                 latitude: 0,
             }, jwt);
+            setLoading(false);
             const { answer, places } = response.response;
             const botMessage = {
                 id: new Date().getTime() + 1,
@@ -119,7 +123,10 @@ const ChatComponent = () => {
                     </div>
                 ))}
             </div>
-            <div className="px-4 pt-4 mb-2 sm:mb-0 bg-white">
+            <div className="px-4 pt-4 mb-2 sm:mb-0 bg-white relative">
+                <div className={`absolute top-[-20px] left-[20px] ${loading ? '' : 'hidden'}`}>
+                    <Loading />
+                </div>
                 <form className="relative flex" onSubmit={(e) => sendMessage(e, newMessage)}>
                     <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} placeholder="Write your message!" className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-5 bg-gray-200 rounded-md py-3" />
                     <button type="submit" className="absolute right-0 items-center inset-y-0 sm:flex px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
