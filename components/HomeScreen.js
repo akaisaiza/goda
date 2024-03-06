@@ -22,9 +22,9 @@ const HomeScreen = ({ openChat }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                let cachedProjects = getProjectsFromCache();
+                let cachedProjects = getProjectsFromCache(); //105.5204183
                 if (!cachedProjects) {
-                    const response = await apiService.fetchData('api/location/near?distance=30&longitude=105.84117000&latitude=21.02450000', jwtToken);
+                    const response = await apiService.fetchData('api/location/near?distance=30&longitude=105.5204183&latitude=21.0124166', jwtToken);
                     setProjects(response);
                     setFilteredProjects(response);
                     localStorage.setItem('projects', JSON.stringify(response));
@@ -87,6 +87,8 @@ const HomeScreen = ({ openChat }) => {
     const onCloseModal = () => {
         setOpenModal(false);
     };
+
+    console.log(filteredProjects)
 
     const ProjectItem = ({ name, image_link, type, id, avg_rate }) => {
         let typeName = '';

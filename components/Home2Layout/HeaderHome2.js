@@ -4,7 +4,7 @@ import Profile from "../Profile";
 import HomeScreen from "../HomeScreen";
 import PofileSVG from "../../public/assets/profile.svg"
 const HeaderHome = () => {
-  const [activeLink, setActiveLink] = useState("home");
+  const [activeLink, setActiveLink] = useState("chat");
   const [scrollActive, setScrollActive] = useState(false);
 
   useEffect(() => {
@@ -33,8 +33,9 @@ const HeaderHome = () => {
 
           </div>
           <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
+             <li onClick={() => handleNavigation("chat")} className={"px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" + (activeLink === "chat" ? " text- blue-500 animation-active " : " text-black-500  ")}>Trợ lí Goda AI</li>
             <li onClick={() => handleNavigation("home")} className={"px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" + (activeLink === "home" ? " text-blue-500 animation-active " : " text-black-500 hover:text-blue-500 a")}>Trang chủ</li>
-            <li onClick={() => handleNavigation("chat")} className={"px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" + (activeLink === "chat" ? " text- blue-500 animation-active " : " text-black-500  ")}>Trợ lí Goda AI</li>
+           
             <li onClick={() => handleNavigation("profile")} className={"px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" + (activeLink === "profile" ? " text- blue-500 animation-active " : " text-black-500  ")}>Cá nhân</li>
             <li>
               <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0ehMYR7XkkZq4KMuPRDKXuYevHvAkaYmLAvbfIbimRuVlSg/viewform" className="px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative text-black-500 hover:text-blue-500">Đánh giá chúng tôi</a>

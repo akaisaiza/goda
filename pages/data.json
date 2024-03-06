@@ -1,0 +1,72 @@
+[
+    {
+        "id": "65b4ab65165acf1f2e9ad995",
+        "name": "An Coffee Hoà Lạc",
+        "image_link": "https://lh5.googleusercontent.com/p/AF1QipNc2QMXFX6572QMuMi0xgZWEyJ5lfro4Z7JGIpJ=w408-h306-k-no",
+        "location": {
+            "coordinates": [105.4937459, 21.026621],
+            "type": "Point"
+        },
+        "avg_rate": 5.0
+    },
+    {
+        "id": "65b4a3bf165acf1f2e9ad918",
+        "name": "Mộc Cafe",
+        "image_link": "https://lh5.googleusercontent.com/p/AF1QipPCv7vbPVGIqxrl-8xvNxjDE2n6fODi-4ArJuId=w408-h544-k-no",
+        "location": {
+            "coordinates": [105.3913041, 21.0097518],
+            "type": "Point"
+        },
+        "avg_rate": 5.0
+    },
+    {
+        "id": "65b4ab65165acf1f2e9ad986",
+        "name": "OMELY COFFE TEA THẠCH ĐÀ",
+        "image_link": "https://lh5.googleusercontent.com/p/AF1QipM0XzZa_uqygLSa0Qhb2EEkAEB_bVd6-9ScZoAn=w408-h255-k-no",
+        "location": {
+            "coordinates": [105.4804136, 21.0107872],
+            "type": "Point"
+        },
+        "avg_rate": 4.0
+    },
+    {
+        "id": "65b4a3bf165acf1f2e9ad924",
+        "name": "Ace Cafe",
+        "image_link": "https://lh5.googleusercontent.com/p/AF1QipNYAxuX1g37PXxFW2XDO9NAfYKE6ZYpWpwkcvLf=w408-h306-k-no",
+        "location": {
+            "coordinates": [105.3913041, 21.0097518],
+            "type": "Point"
+        },
+        "avg_rate": 3.0
+    },
+    {
+        "id": "65b4a3bf165acf1f2e9ad93c",
+        "name": "Lii Coffee",
+        "image_link": "https://lh5.googleusercontent.com/p/AF1QipMCVI0m3T_DjHjsEy33melhSAw89_eTwguNBys=w408-h306-k-no",
+        "location": {
+            "coordinates": [105.3913041, 21.0097518],
+            "type": "Point"
+        },
+        "avg_rate": 5.0
+    },
+    {
+        "id": "65b4a3bf165acf1f2e9ad953",
+        "name": "Lii Coffee",
+        "image_link": "https://lh5.googleusercontent.com/p/AF1QipMq2pSBOQEPSvKFeNZhoggK4e1jnxC_oRrp11Sn=w408-h725-k-no",
+        "location": {
+            "coordinates": [105.3913041, 21.0097518],
+            "type": "Point"
+        },
+        "avg_rate": 5.0
+    },
+    {
+        "id": "65b4a3bf165acf1f2e9ad925",
+        "name": "Greenhomes Cafe",
+        "image_link": "https://lh5.googleusercontent.com/p/AF1QipNCkh8cUf1GRfjGy7lk5kSLzf5GT7qCPaizSwEb=w408-h306-k-no",
+        "location": {
+            "coordinates": [105.3913041, 21.0097518],
+            "type": "Point"
+        },
+        "avg_rate": 5.0
+    }
+]
