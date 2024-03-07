@@ -106,7 +106,7 @@ const ChatComponent = () => {
             const data1 = fakeData.slice(0, 4)
             const botMessage = {
                 id: new Date().getTime() + 1,
-                text: "Đó là một ý tưởng tuyệt vời! Tôi có một vài địa điểm lãng mạn gửi tới bạn:",
+                text: "Ở Hòa Lạc có khá nhiều quán cafe phù hợp để bạn có thể hẹn hò cùng người yêu. Đây là một số gợi ý của tôi về các địa điểm lãng mạn gửi tới bạn:",
                 sender: 'bot',
                 places: data1,
             };
@@ -116,11 +116,11 @@ const ChatComponent = () => {
                 setMessages((prevMessages) => [...prevMessages, botMessage]);
             }, 4000)
         }
-        if (message == 'Cho tôi những địa điểm được đánh giá 5 sao') {
+        if (message == 'Cho tôi những địa điểm được đánh giá 4 sao trở lên') {
             const data2 = fakeData.slice(0, 2)
             const botMessage = {
                 id: new Date().getTime() + 1,
-                text: "Ok, sau đây là những địa điểm được người dùng đánh giá chất lượng tốt với 5 sao đã được chọn lọc:",
+                text: "Tôi gợi ý cho bạn 2 địa điểm là ... và .... Đây là hai địa điểm được các bạn trẻ ưu thích và thích hợp cho cho các cặp đôi",
                 sender: 'bot',
                 places: data2,
             };
@@ -130,7 +130,7 @@ const ChatComponent = () => {
                 setMessages((prevMessages) => [...prevMessages, botMessage]);
             }, 2000)
         }
-        if (message == 'Cho tôi địa điểm khác') {
+        if (message == 'Tôi muốn tìm quán cafe ở khu vực Bình Yên, Hòa Lạc') {
             const data3 = fakeData.slice(4)
             const botMessage = {
                 id: new Date().getTime() + 1,
@@ -144,7 +144,7 @@ const ChatComponent = () => {
                 setMessages((prevMessages) => [...prevMessages, botMessage]);
             }, 3000)
         }
-        if (message == 'Tôi muốn xem thêm hình ảnh của Greenhome') {
+        if (message == 'TTôi muốn thêm thông tin và hình ảnh của Greenhome') {
             const images = [
                 "https://lh5.googleusercontent.com/p/AF1QipMu4gczjy7OZOO_YVoO2krukfWBqS-6_QBSVO2H=w203-h327-k-no",
                 "https://lh5.googleusercontent.com/p/AF1QipNjg8SAamhXhDDELltC7X9B2SUJiW44oDpG_PTM=s508-k-no",
