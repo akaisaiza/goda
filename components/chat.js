@@ -131,13 +131,28 @@ const ChatComponent = () => {
                 )}
             </div>
             <div className="px-4 pt-4 mb-2 sm:mb-0 bg-white">
-                <form className="relative flex" onSubmit={(e) => sendMessage(e, newMessage)}>
-                    <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} placeholder="Write your message!" className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-5 bg-gray-200 rounded-md py-3" />
-                    <button type="submit" className="absolute right-0 items-center inset-y-0 sm:flex px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
-                        Gửi
-                    </button>
-                </form>
-            </div>
+            <div className="px-4 pt-4 mb-2 sm:mb-0 bg-white">
+            <div className="px-4 pt-4 mb-2 sm:mb-0 bg-white">
+    <form className="relative flex" onSubmit={(e) => sendMessage(e, newMessage)}>
+        <textarea
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Write your message!"
+            className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-5 bg-gray-200 rounded-md py-1 resize-none border-none shadow-sm"
+            rows="1"
+            style={{ lineHeight: '2', overflow: 'hidden',  paddingRight: '80px', boxSizing: 'border-box' }}  // Adjust paddingRight to ensure space for the button
+        ></textarea>
+        <button type="submit" className=" right-0 top-0 mt-3 p-4 mr-3 items-center sm:flex px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
+            Gửi
+        </button>
+    </form>
+</div>
+
+</div>
+
+</div>
+
+
             <LocationModal
                 openModal={openModal}
                 onCloseModal={onCloseModal}

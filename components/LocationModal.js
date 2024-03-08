@@ -26,8 +26,7 @@ const LocationModal = ({ openModal, onCloseModal, selectedLocationid }) => {
 
         fetchData();
     }, [selectedLocationid, jwtToken]);
-    const summaryIndex = locationData?.text.indexOf("Summary:");
-    const summaryText = summaryIndex !== -1 ? locationData?.text.substring(summaryIndex + "Summary:".length) : null;
+    const summaryIndex = locationData?.content;
     const dayOfWeek = {
         monday: 'Thứ 2',
         tuesday: 'Thứ 3',
@@ -174,7 +173,7 @@ const LocationModal = ({ openModal, onCloseModal, selectedLocationid }) => {
                         </table>
                     </div>
                     <div className="font-semibold p-2" >  Mô tả :</div>
-                    {summaryText}
+                    {summaryIndex}
                     <div>
                         <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
                             <div class="max-w-2xl mx-auto px-4">
