@@ -32,7 +32,7 @@ export default function Register() {
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Đăng kí tài khoản
                         </h1>
-                        {error && <p className="text-red">{error}</p>}
+                        {error && <p className="text-red-500">{error}</p>}
                         <form className="space-y-4 md:space-y-6" onSubmit={handleRegister}>
                             <div>
                                 <label htmlFor="username" className="block mb-2 text-sm  text-gray-900 dark:text-white">Tên đăng kí</label>

@@ -44,6 +44,9 @@ module.exports = {
         100: "#007FFF",
         400: "#007FFF",
         500: "#007FFF",
+      },
+      red:{
+        500: "#FF0000"
       }
     },
     extend: {},
