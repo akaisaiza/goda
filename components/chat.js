@@ -26,7 +26,9 @@ const ChatComponent = () => {
             setJwt(storedJwt);
         }
     }, [router]);
-
+    useEffect(() => {
+        onIntroduction();
+    }, []);
     const onCloseModal = () => setOpenModal(false);
 
     const handleLocationClick = (id) => {
@@ -76,7 +78,15 @@ const ChatComponent = () => {
         }
     };
 
-
+    const onIntroduction = () => {
+        const botMessage = {
+            id: new Date().getTime() + 1,
+            text: "Xin chào, tôi là trợ lý Goda AI - một sản phẩm của nhóm Terror thuộc Đại học FPT. Hãy cho tôi biết điều bạn cần tìm?",
+            sender: 'bot',
+            places: [],
+        };
+        setMessages([...messages, botMessage]);
+    }
     const botAvatar = '/assets/goda_logo.png';
 
     return (
